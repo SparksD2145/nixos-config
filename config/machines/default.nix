@@ -7,11 +7,12 @@
     system = "x86_64-linux";
     modules = [
       # System Configuration
-      ./shared.nix
+      ./shared
       ./alpha
 
       # SOPS-NIX module for managing secrets
       inputs.sops-nix.nixosModules.sops
+      { sops = import ../modules/sops; }
 
       # Home Manager module for managing user configuration
       inputs.home-manager.nixosModules.home-manager
