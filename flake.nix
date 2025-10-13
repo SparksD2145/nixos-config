@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    
+
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -13,7 +13,7 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     # sops-nix, used for managing secrets
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -21,28 +21,36 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, ... }: {
-    nixosConfigurations = {
-      "alpha" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          # System Configuration
-          ./config/machines/main.nix
-          ./config/machines/alpha/configuration.nix
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      sops-nix,
+      ...
+    }:
+    {
+      nixosConfigurations = {
+        "alpha" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            # System Configuration
+            ./config/machines/main.nix
+            ./config/machines/alpha/configuration.nix
 
-          # SOPS-NIX module for managing secrets
-          sops-nix.nixosModules.sops
+            # SOPS-NIX module for managing secrets
+            sops-nix.nixosModules.sops
 
-          # Home Manager module for managing user configuration
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.sparks = import ./config/users/home.sparks.nix;
-          }
-        ];
+            # Home Manager module for managing user configuration
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.sparks = import ./config/users/home.sparks.nix;
+            }
+          ];
+        };
       };
     };
-  };
 }

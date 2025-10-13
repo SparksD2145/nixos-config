@@ -1,10 +1,13 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
   # Enable nix-command and flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -17,7 +20,7 @@
 
   # enable shells
   programs.zsh.enable = true;
-  
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
