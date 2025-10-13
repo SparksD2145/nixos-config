@@ -22,35 +22,11 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      sops-nix,
-      ...
-    }:
     {
-      nixosConfigurations = {
-        "alpha" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            # System Configuration
-            ./config/machines/main.nix
-            ./config/machines/alpha/configuration.nix
-
-            # SOPS-NIX module for managing secrets
-            sops-nix.nixosModules.sops
-
-            # Home Manager module for managing user configuration
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.sparks = import ./config/users/home.sparks.nix;
-            }
-          ];
-        };
-      };
+      self,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = (import ./config/machines/main.nix { inherit inputs; });
     };
 }

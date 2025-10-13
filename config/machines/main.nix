@@ -1,30 +1,21 @@
-{ pkgs, ... }:
 {
-  # Set your time zone.
-  time.timeZone = "America/Chicago";
+  inputs,
+  ...
+}:
+{
+  "alpha" = inputs.nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+    modules = [
+      # System Configuration
+      ./shared.nix
+      ./alpha/configuration.nix
 
-  # Enable nix-command and flakes
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+      # SOPS-NIX module for managing secrets
+      inputs.sops-nix.nixosModules.sops
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    tmux
-    usbutils
-  ];
-
-  # enable shells
-  programs.zsh.enable = true;
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  programs.ssh.startAgent = true;
-
-  # Fuse filesystem that returns symlinks to executables based on the PATH of the requesting process. This is useful to execute shebangs on NixOS that assume hard coded locations in locations like /bin or /usr/bin etc.
-  services.envfs.enable = true;
+      # Home Manager module for managing user configuration
+      inputs.home-manager.nixosModules.home-manager
+      { home-manager = import ../modules/home-manager/main.nix; }
+    ];
+  };
 }

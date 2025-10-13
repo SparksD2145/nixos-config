@@ -181,41 +181,44 @@
     '';
   };
 
-  programs.vim.enable = true;
-  programs.vim.defaultEditor = true;
-  programs.vim.plugins = [
-    pkgs.vimPlugins.nerdtree
-    pkgs.vimPlugins.vim-airline
-    pkgs.vimPlugins.vim-fugitive
-    pkgs.vimPlugins.vim-better-whitespace
-    pkgs.vimPlugins.vim-colorschemes
-    pkgs.vimPlugins.tabular
-    pkgs.vimPlugins.syntastic
-    pkgs.vimPlugins.ctrlp-vim
-    pkgs.vimPlugins.emmet-vim
-    pkgs.vimPlugins.editorconfig-vim
-    pkgs.vimPlugins.vim-yaml
-    pkgs.vimPlugins.ansible-vim
-    pkgs.vimPlugins.vim-polyglot
-  ];
-  programs.vim.extraConfig = ''
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+    plugins = [
+      pkgs.vimPlugins.nerdtree
+      pkgs.vimPlugins.vim-airline
+      pkgs.vimPlugins.vim-fugitive
+      pkgs.vimPlugins.vim-better-whitespace
+      pkgs.vimPlugins.vim-colorschemes
+      pkgs.vimPlugins.tabular
+      pkgs.vimPlugins.syntastic
+      pkgs.vimPlugins.ctrlp-vim
+      pkgs.vimPlugins.emmet-vim
+      pkgs.vimPlugins.editorconfig-vim
+      pkgs.vimPlugins.vim-yaml
+      pkgs.vimPlugins.ansible-vim
+      pkgs.vimPlugins.vim-polyglot
+    ];
+    extraConfig = ''
 
-    set nocompatible              " be iMproved, required
-    filetype off                  " required
+      set nocompatible              " be iMproved, required
+      filetype off                  " required
 
-    " Us spaces instead of tabs
-    set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+      " Us spaces instead of tabs
+      set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
-    " Use syntax highlighting
-    syntax on
+      " Use syntax highlighting
+      syntax on
 
-    " NERDTree show hidden by default
-    let NERDTreeShowHidden=1
+      " NERDTree show hidden by default
+      let NERDTreeShowHidden=1
 
-    colorscheme evening
+      colorscheme evening
 
-    set number relativenumber
-  '';
+      set number relativenumber
+    '';
+
+  };
 
   # The state version is required and should stay at the version you
   # originally installed.
