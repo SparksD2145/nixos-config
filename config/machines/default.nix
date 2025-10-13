@@ -8,14 +8,14 @@
     modules = [
       # System Configuration
       ./shared.nix
-      ./alpha/configuration.nix
+      ./alpha
 
       # SOPS-NIX module for managing secrets
       inputs.sops-nix.nixosModules.sops
 
       # Home Manager module for managing user configuration
       inputs.home-manager.nixosModules.home-manager
-      { home-manager = import ../modules/home-manager/main.nix; }
+      { home-manager = import ../modules/home-manager; }
     ];
   };
 }

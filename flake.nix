@@ -27,6 +27,6 @@
       ...
     }@inputs:
     {
-      nixosConfigurations = (import ./config/machines/main.nix { inherit inputs; });
+      nixosConfigurations = (import ./config/machines { inherit inputs; });
     };
 }
