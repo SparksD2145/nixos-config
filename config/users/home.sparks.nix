@@ -4,6 +4,7 @@
   home.username = "sparks";
   home.homeDirectory = "/home/sparks";
 
+
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     # archives
@@ -46,6 +47,8 @@
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
+    nixfmt-rfc-style
+    nil
 
     # productivity
     glow # markdown previewer in terminal
