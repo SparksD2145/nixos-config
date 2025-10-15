@@ -1,12 +1,4 @@
-{ inputs, system, ... }:
-let
-  pkgs = import inputs.nixpkgs {
-    inherit system;
-    config = {
-      allowUnfree = true;
-    };
-  };
-in
+{ inputs, ... }:
 {
 
   sharedModules = [
@@ -15,5 +7,5 @@ in
 
   useGlobalPkgs = true;
   useUserPackages = true;
-  users = import ./users { inherit inputs pkgs; };
+  users = import ../../users/home-manager.nix;
 }

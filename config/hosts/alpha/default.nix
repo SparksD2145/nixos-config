@@ -9,7 +9,9 @@
     # Include the results of the hardware scan.
     ./hardware.nix
     ./desktop.nix
-    ./users.nix
+
+    # Include system-level user configurations
+    ../../users/system.nix
   ];
 
   # Bootloader.
