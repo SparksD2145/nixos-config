@@ -21,17 +21,33 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "alpha"; # Define your hostname.
-  networking.networkmanager.enable = true; # Enable NetworkManager
-  networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
-  networking.wireless.secretsFile = "/run/secrets/networking/wireless.conf";
-  networking.wireless.networks = {
-    "Sparks" = {
-      pskRaw = "ext:psk_home";
-      priority = 100000;
-    };
-    "SparksD2145" = {
-      pskRaw = "ext:psk_hotspot";
-      priority = 90000;
+
+  networking.networkmanager = {
+    enable = true;
+    ensureProfiles = {
+      environmentFiles = [ config.sops.secrets."networking/wireless.conf".path ];
+      profiles = {
+        home-wifi = {
+          connection.id = "home-wifi";
+          connection.type = "wifi";
+          wifi.ssid = "$HOME_SSID";
+          wifi-security = {
+            auth-alg = "open";
+            key-mgmt = "wpa-psk";
+            psk = "$HOME_PSK";
+          };
+        };
+        hotspot-wifi = {
+          connection.id = "hotspot-wifi";
+          connection.type = "wifi";
+          wifi.ssid = "$HOTSPOT_SSID";
+          wifi-security = {
+            auth-alg = "open";
+            key-mgmt = "wpa-psk";
+            psk = "$HOTSPOT_PSK";
+          };
+        };
+      };
     };
   };
 
