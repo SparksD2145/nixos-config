@@ -4,13 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
-    # home-manager, used for managing user configuration
+    # Home Manager, used for managing user configurations
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
-      # The `follows` keyword in inputs is used for inheritance.
-      # Here, `inputs.nixpkgs` of home-manager is kept consistent with
-      # the `inputs.nixpkgs` of the current flake,
-      # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -19,14 +15,17 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # nix-flatpak, used for declaratively managing flatpaks
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
   };
 
   outputs =
     {
-      self,
+      nixpkgs,
       ...
     }@inputs:
     {
-      nixosConfigurations = (import ./config/machines { inherit inputs; });
+      nixosConfigurations = import ./config/hosts { inherit inputs; };
     };
 }

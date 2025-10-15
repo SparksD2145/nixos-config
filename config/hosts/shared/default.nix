@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./i18n.nix
+  ];
+
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
