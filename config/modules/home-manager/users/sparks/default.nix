@@ -8,8 +8,6 @@
   home.username = "sparks";
   home.homeDirectory = "/home/sparks";
 
-  sops = import ./sops.nix;
-
   # Packages that should be installed to the user profile.
   home.packages = import ./packages.nix { inherit inputs pkgs; };
 

@@ -14,6 +14,8 @@
   # age.generateKey = true;
 
   # This is the actual specification of the secrets.
-  secrets.test_data = { };
-  # secrets."myservice/my_subdir/my_secret" = { };
+  secrets.test-data = { };
+  secrets."users/sparks/passwd" = {
+    neededForUsers = true;
+  };
 }
