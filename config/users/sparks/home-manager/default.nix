@@ -68,7 +68,7 @@
 
     shellAliases = {
       ll = "ls -l";
-      update = "sudo nixos-rebuild switch --flake .";
+      update = "sudo nixos-rebuild switch --flake 'github:SparksD2145/nixos-config'";
     };
     history.size = 10000;
 
