@@ -21,6 +21,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "alpha"; # Define your hostname.
+  networking.networkmanager.enable = true; # Enable NetworkManager
   networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   networking.wireless.secretsFile = "/run/secrets/networking/wireless.conf";
   networking.wireless.networks = {
