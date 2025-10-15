@@ -1,9 +1,11 @@
 keys:
   - &admin_sparks age1jayaggqedpe7djyjpk0a74xxc2vlqzumeah39f548rnkjse76syst7t4pl
   - &workstation_alpha age1p6y752pv3ze0a82lec5lyv5n20xex3ennpscgj8ueu7tecqpfd5s4wqe2j
+  - &workstation_delta age17auaf780ad2m0jm5e348c8fpjeak3795jw8dgnmj6yk02whykdyq5eh9ps
 creation_rules:
   - path_regex: config/.*\.sops\.(yaml|json|env|ini)$
     key_groups:
       - age:
           - *admin_sparks
           - *workstation_alpha
+          - *workstation_delta
