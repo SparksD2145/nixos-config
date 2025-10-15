@@ -79,6 +79,7 @@ with pkgs;
 
   # fun stuff
   obs-studio
+  vlc
 
   # system call monitoring
   strace # system call monitoring
