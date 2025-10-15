@@ -2,16 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
 
-{ pkgs, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware.nix
     ./desktop.nix
-
-    # Include system-level user configurations
-    ../../users/system.nix
   ];
 
   # Bootloader.
@@ -59,6 +61,9 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  # Include system-level user configurations
+  users = import ../../users/system.nix { inherit config inputs pkgs; };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
