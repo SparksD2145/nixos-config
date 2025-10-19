@@ -80,6 +80,7 @@ with pkgs;
   # fun stuff
   obs-studio
   vlc
+  davinci-resolve
 
   # system call monitoring
   strace # system call monitoring
