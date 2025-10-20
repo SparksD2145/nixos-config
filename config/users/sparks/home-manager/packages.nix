@@ -73,14 +73,6 @@ with pkgs;
   gh
   glab
   uv
-  vscode
-  virt-manager
-  remmina
-
-  # fun stuff
-  obs-studio
-  vlc
-  davinci-resolve
 
   # system call monitoring
   strace # system call monitoring

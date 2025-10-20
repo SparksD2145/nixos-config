@@ -2,7 +2,6 @@
 {
   imports = [
     ./i18n.nix
-    ./wireless.nix
   ];
 
   # Set your time zone.

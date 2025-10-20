@@ -18,9 +18,6 @@
 
     # nix-flatpak, used for declaratively managing flatpaks
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
-
-    # flake-parts, used for modularizing NixOS configurations
-    # flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs =

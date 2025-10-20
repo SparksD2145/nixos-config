@@ -9,6 +9,9 @@
   ...
 }:
 
+let
+  userlist = import ../../../../users/system.nix { inherit config inputs pkgs; };
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -37,7 +40,7 @@
   programs.firefox.enable = true;
 
   # Include system-level user configurations
-  users = import ../../users/system.nix { inherit config inputs pkgs; };
+  users = userlist;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

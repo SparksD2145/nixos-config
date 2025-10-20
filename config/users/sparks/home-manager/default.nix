@@ -9,7 +9,10 @@
   home.homeDirectory = "/home/sparks";
 
   # Packages that should be installed to the user profile.
-  home.packages = import ./packages.nix { inherit inputs pkgs; };
+  home.packages = builtins.concatLists [
+    (import ./packages.nix { inherit inputs pkgs; })
+    (import ./packages-gui.nix { inherit inputs pkgs; })
+  ];
 
   # basic configuration of git, please change to your own
   programs.git = {
@@ -27,21 +30,6 @@
       aws.disabled = true;
       gcloud.disabled = true;
       line_break.disabled = true;
-    };
-  };
-
-  # alacritty - a cross-platform, GPU-accelerated terminal emulator
-  programs.alacritty = {
-    enable = true;
-    # custom settings
-    settings = {
-      env.TERM = "xterm-256color";
-      font = {
-        size = 12;
-        draw_bold_text_with_bright_colors = true;
-      };
-      scrolling.multiplier = 5;
-      selection.save_to_clipboard = true;
     };
   };
 
@@ -67,7 +55,7 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      ll = "ls -l";
+      ll = "ls -lha";
       update = "sudo nixos-rebuild switch --flake 'github:SparksD2145/nixos-config'";
     };
     history.size = 10000;

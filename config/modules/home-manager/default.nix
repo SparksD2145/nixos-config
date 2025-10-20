@@ -7,5 +7,6 @@
 
   useGlobalPkgs = true;
   useUserPackages = true;
+
   users = import ../../users/home-manager.nix { inherit inputs system; };
 }
