@@ -19,23 +19,28 @@ let
       inputs.home-manager.nixosModules.home-manager
       { home-manager = import ../../../modules/home-manager { inherit inputs system; }; }
 
+      # Import users for home-manager
+      ../../../users/home-manager.nix
+
       # Nix-Flatpak module for managing flatpaks declaratively
       inputs.nix-flatpak.nixosModules.nix-flatpak
     ];
 in
 {
-  "alpha" = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      # System-specific configurations
-      ./alpha
-    ]
-    ++ applySharedModules { inherit inputs system; };
-  };
-  "delta" = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      # System-specific configurations
-      ./delta
-    ]
-    ++ applySharedModules { inherit inputs system; };
+  flake.nixosConfigurations = {
+    "alpha" = inputs.nixpkgs.lib.nixosSystem {
+      modules = [
+        # System-specific configurations
+        ./alpha
+      ]
+      ++ applySharedModules { inherit inputs system; };
+    };
+    "delta" = inputs.nixpkgs.lib.nixosSystem {
+      modules = [
+        # System-specific configurations
+        ./delta
+      ]
+      ++ applySharedModules { inherit inputs system; };
+    };
   };
 }

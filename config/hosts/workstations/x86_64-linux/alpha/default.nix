@@ -4,19 +4,15 @@
 
 {
   pkgs,
-  inputs,
-  config,
   ...
 }:
 
-let
-  userlist = import ../../../../users/system.nix { inherit config inputs pkgs; };
-in
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware.nix
     ./desktop.nix
+    ../../../../users/system.nix
   ];
 
   # Bootloader.
@@ -64,9 +60,6 @@ in
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # Include system-level user configurations
-  users = userlist;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
