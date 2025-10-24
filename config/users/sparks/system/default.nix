@@ -12,6 +12,7 @@
       "networkmanager"
       "wheel"
       "libvirtd"
+      (if config.virtualisation.docker.enable then "docker" else "")
     ];
     packages = with pkgs; [
       kdePackages.kate
