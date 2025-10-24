@@ -9,4 +9,5 @@ with pkgs;
   obs-studio
   vlc
   davinci-resolve
+  moonlight-qt
 ]
