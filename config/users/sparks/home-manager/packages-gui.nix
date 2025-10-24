@@ -4,6 +4,7 @@ with pkgs;
   vscode
   virt-manager
   remmina
+  xclip
 
   # fun stuff
   obs-studio
