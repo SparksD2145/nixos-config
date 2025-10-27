@@ -64,6 +64,7 @@
       shellAliases = {
         ll = "ls -lha";
         update = "sudo nixos-rebuild switch --flake 'github:SparksD2145/nixos-config'";
+        fluxupdate = "git add .; git commit --amend --no-edit; git push -f; git push gitlab -f; flux reconcile kustomization flux-system --with-source;";
       };
       history.size = 10000;
 
