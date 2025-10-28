@@ -35,6 +35,7 @@ with pkgs;
   gnupg
   parted
   sshpass
+  sshfs
 
   # nix related
   #
