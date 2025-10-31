@@ -4,6 +4,7 @@ with pkgs;
   vscode
   virt-manager
   remmina
+  wl-clipboard
 
   # fun stuff
   obs-studio
