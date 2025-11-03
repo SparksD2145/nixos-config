@@ -54,6 +54,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    curl
+    v4l-utils
+  ];
+
   # Enable flatpak
   services.flatpak = {
     enable = true;

@@ -17,7 +17,6 @@
     ];
     packages = with pkgs; [
       kdePackages.kate
-      discord-ptb
       google-chrome
       # thunderbird
     ];

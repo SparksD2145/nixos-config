@@ -10,6 +10,7 @@ with pkgs;
   obs-studio
   vlc
   moonlight-qt
+  discord-ptb
 
   # video editing
   davinci-resolve
