@@ -74,6 +74,7 @@ with pkgs;
   gh
   glab
   uv
+  vlang
 
   # system call monitoring
   strace # system call monitoring

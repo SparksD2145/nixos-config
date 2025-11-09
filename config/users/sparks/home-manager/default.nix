@@ -65,6 +65,7 @@
         ll = "ls -lha";
         update = "sudo nixos-rebuild switch --flake 'github:SparksD2145/nixos-config'";
         fluxupdate = "git add .; git commit --amend --no-edit; git push -f; git push gitlab -f; flux reconcile kustomization flux-system --with-source;";
+
       };
       history.size = 10000;
 
@@ -83,6 +84,7 @@
       initContent = ''
         export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin";
         export PATH="$PATH:$HOME/.krew/bin"
+        alias vlang=`whereis v -b | awk '{ print $2 }'`
       '';
     };
 
