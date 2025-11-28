@@ -74,7 +74,6 @@ with pkgs;
   gh
   glab
   uv
-  vlang
   ntfy
 
   # system call monitoring
