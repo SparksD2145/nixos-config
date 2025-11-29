@@ -75,6 +75,7 @@ with pkgs;
   glab
   uv
   ntfy
+  go
 
   # system call monitoring
   strace # system call monitoring
