@@ -26,9 +26,12 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
+    xpadneo
   ];
   boot.extraModprobeConfig = ''
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    options bluetooth disable_ertm=Y
+
   '';
   security.polkit.enable = true;
 
@@ -68,4 +71,6 @@
 
   # enable bluetooth
   hardware.bluetooth.enable = true;
+  hardware.xpadneo.enable = true;
+
 }
