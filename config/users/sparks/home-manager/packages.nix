@@ -76,6 +76,7 @@ with pkgs;
   uv
   ntfy
   go
+  nodejs_24
 
   # system call monitoring
   strace # system call monitoring
