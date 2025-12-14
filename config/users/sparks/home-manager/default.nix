@@ -24,8 +24,8 @@
     # basic configuration of git, please change to your own
     programs.git = {
       enable = true;
-      userName = "Thomas Ibarra";
-      userEmail = "hello@iwrite.software";
+      settings.user.name = "Thomas Ibarra";
+      settings.user.email = "hello@iwrite.software";
     };
 
     # starship - an customizable prompt for any shell
