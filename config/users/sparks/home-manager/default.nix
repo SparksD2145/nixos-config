@@ -26,6 +26,7 @@
       enable = true;
       settings.user.name = "Thomas Ibarra";
       settings.user.email = "hello@iwrite.software";
+      lfs.enable = true;
     };
 
     # starship - an customizable prompt for any shell

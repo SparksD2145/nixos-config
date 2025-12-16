@@ -65,6 +65,14 @@
 
   # Let there be games
   programs.steam.enable = true;
+  services.monado = {
+    enable = true;
+    defaultRuntime = true; # Register as default OpenXR runtime
+  };
+  systemd.user.services.monado.environment = {
+    STEAMVR_LH_ENABLE = "1";
+    XRT_COMPOSITOR_COMPUTE = "1";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
