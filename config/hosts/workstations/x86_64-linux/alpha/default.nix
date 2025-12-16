@@ -12,6 +12,7 @@
     # Include the results of the hardware scan.
     ./hardware.nix
     ./desktop.nix
+    ./games.nix
     ../../../../users/system.nix
   ];
 
@@ -50,6 +51,7 @@
     wget
     curl
     v4l-utils
+    xrizer
   ];
 
   # Enable flatpak
@@ -62,17 +64,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # Let there be games
-  programs.steam.enable = true;
-  services.monado = {
-    enable = true;
-    defaultRuntime = true; # Register as default OpenXR runtime
-  };
-  systemd.user.services.monado.environment = {
-    STEAMVR_LH_ENABLE = "1";
-    XRT_COMPOSITOR_COMPUTE = "1";
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
