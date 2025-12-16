@@ -17,6 +17,7 @@
   services.monado = {
     enable = true;
     defaultRuntime = true; # Register as default OpenXR runtime
+    highPriority = true;
   };
   systemd.user.services.monado.environment = {
     STEAMVR_LH_ENABLE = "1";
