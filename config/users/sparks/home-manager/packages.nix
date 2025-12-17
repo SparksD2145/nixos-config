@@ -73,10 +73,11 @@ with pkgs;
   rclone
   gh
   glab
-  uv
   ntfy
   go
   nodejs_24
+  python3
+  uv
 
   # system call monitoring
   strace # system call monitoring
