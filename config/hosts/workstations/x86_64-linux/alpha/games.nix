@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   # Let there be games
   programs.steam = {
@@ -48,4 +48,8 @@
         ];
       };
   };
+
+  services.flatpak.packages = [
+    "org.prismlauncher.PrismLauncher"
+  ];
 }
