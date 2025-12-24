@@ -10,8 +10,10 @@ with pkgs;
   # utils
   ripgrep # recursively searches directories for a regex pattern
   jq # A lightweight and flexible command-line JSON processor
+  yq
   eza # A modern replacement for 'ls'
   fzf # A command-line fuzzy finder
+  direnv
 
   # networking tools
   mtr # A network diagnostic tool
@@ -59,25 +61,25 @@ with pkgs;
   fluxcd
   sops
   age
-  pre-commit
-  yq
   ansible
-  direnv
-  go-task
   opentofu
   kustomize
   gitleaks
-  nodePackages.prettier
   ipmitool
   fasd
   rclone
-  gh
-  glab
   ntfy
-  go
+
+  # development
   nodejs_24
+  nodePackages.prettier
   python3
   uv
+  go
+  go-task
+  gh
+  glab
+  pre-commit
 
   # system call monitoring
   strace # system call monitoring
