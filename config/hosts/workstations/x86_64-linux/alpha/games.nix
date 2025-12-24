@@ -49,7 +49,8 @@
       };
   };
 
-  services.flatpak.packages = [
-    "org.prismlauncher.PrismLauncher"
+  # Minecraft Launcher
+  environment.systemPackages = with pkgs; [
+    prismlauncher
   ];
 }
