@@ -100,8 +100,6 @@
         vimPlugins.vim-colorschemes
         vimPlugins.tabular
         vimPlugins.syntastic
-        vimPlugins.ctrlp-vim
-        vimPlugins.emmet-vim
         vimPlugins.editorconfig-vim
         vimPlugins.vim-yaml
         vimPlugins.ansible-vim
