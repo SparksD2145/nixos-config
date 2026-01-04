@@ -1,7 +1,12 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   networking.networkmanager = {
     enable = true;
+
+    plugins = with pkgs; [
+      networkmanager-openvpn
+    ];
+
     ensureProfiles = {
       environmentFiles = [ config.sops.secrets."networking/wireless.conf".path ];
       profiles = {
