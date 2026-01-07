@@ -20,6 +20,7 @@
     wget
     tmux
     usbutils
+    androidenv.androidPkgs.androidsdk
   ];
 
   # enable shells
