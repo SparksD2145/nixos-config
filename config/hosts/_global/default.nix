@@ -20,7 +20,6 @@
     wget
     tmux
     usbutils
-    androidenv.androidPkgs.androidsdk
   ];
 
   # enable shells
@@ -40,8 +39,4 @@
 
   # Enable user management by nixos-rebuild. Disable manual user management.
   users.mutableUsers = false;
-
-  # Enable ADB (Android Debug Bridge) service and add sparks to the adbusers group.
-  programs.adb.enable = true;
-  users.users.sparks.extraGroups = [ "adbusers" ];
 }
