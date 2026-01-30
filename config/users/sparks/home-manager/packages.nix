@@ -69,6 +69,7 @@ with pkgs;
   fasd
   rclone
   ntfy
+  cilium-cli
 
   # development
   nodejs_24
