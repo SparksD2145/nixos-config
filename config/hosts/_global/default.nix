@@ -32,9 +32,13 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
+    curl
     tmux
     usbutils
   ];
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # enable shells
   programs.zsh.enable = true;

@@ -11,9 +11,9 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      "libvirtd"
       "dialout"
       (if config.virtualisation.docker.enable then "docker" else "")
+      (if config.virtualisation.libvirtd.enable then "libvirtd" else "")
     ];
     packages = with pkgs; [
       kdePackages.kate

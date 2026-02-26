@@ -11,63 +11,23 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware.nix
-    ./desktop.nix
-    ./games.nix
+
+    # Standard configurations
     ../../../../users/system.nix
+
+    # K3s server configuration.
+    ../_shared/k3s-server.nix
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "alpha"; # Define your hostname.
+  networking.hostName = "xray"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-      swtpm.enable = true;
-    };
-  };
-
-  virtualisation.docker = {
-    enable = true;
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    v4l-utils
-  ];
-
-  # Enable flatpak
-  services.flatpak = {
-    enable = true;
-    packages = [
-      "app.freelens.Freelens"
-    ];
-  };
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
 
