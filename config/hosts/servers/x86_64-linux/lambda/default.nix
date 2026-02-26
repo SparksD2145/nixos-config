@@ -16,7 +16,7 @@
     ../../../../users/system.nix
 
     # K3s server configuration.
-    ../_shared/k3s-agent.nix
+    ../../_shared/k3s-agent.nix
   ];
 
   # Bootloader.
