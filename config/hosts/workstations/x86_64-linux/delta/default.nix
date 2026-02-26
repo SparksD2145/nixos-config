@@ -11,7 +11,6 @@
     # Include the results of the hardware scan.
     ./hardware.nix
     ./desktop.nix
-    ../../../../users/system.nix
   ];
 
   # Bootloader.

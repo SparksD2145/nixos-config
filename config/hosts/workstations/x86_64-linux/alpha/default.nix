@@ -13,7 +13,6 @@
     ./hardware.nix
     ./desktop.nix
     ./games.nix
-    ../../../../users/system.nix
   ];
 
   # Bootloader.

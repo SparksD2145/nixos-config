@@ -1,6 +1,6 @@
 { ... }:
 {
   imports = [
-    ./sparks/system
+    ./sparks
   ];
 }

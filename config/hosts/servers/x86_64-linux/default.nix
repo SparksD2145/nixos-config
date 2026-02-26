@@ -5,23 +5,14 @@
 let
   system = "x86_64-linux";
   applySharedModules =
-    { inputs, system }:
+    { ... }:
     [
       # Shared system configuration across all hosts
       ../../_global
-      ./shared
+      ../../../users
 
-      # SOPS-NIX module for managing secrets
-      inputs.sops-nix.nixosModules.sops
-      { sops = import ../../../modules/sops; }
-
-      # Home Manager module for managing user configuration
-      inputs.home-manager.nixosModules.home-manager
-      { home-manager = import ../../../modules/home-manager { inherit inputs system; }; }
-
-      # Import users for home-manager
-      ../../../users/home-manager.nix
-    ];
+    ]
+    ++ (import ../../../modules { inherit inputs system; });
 in
 {
   flake.nixosConfigurations = {

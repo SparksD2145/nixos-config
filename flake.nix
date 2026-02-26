@@ -17,6 +17,10 @@
 
     # flake-parts, used for modularizing NixOS configurations
     flake-parts.url = "github:hercules-ci/flake-parts";
+
+    # comin, used for managing gitops configurations
+    comin.url = "github:nlewo/comin";
+    comin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -28,7 +32,7 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         ./config/hosts/workstations/x86_64-linux
-        ./config/hosts/servers/x86_64-linux
+        # ./config/hosts/servers/x86_64-linux
         # ./config/hosts/servers/aarch64-linux
       ];
 

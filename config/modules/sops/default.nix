@@ -19,4 +19,6 @@
   secrets."users/sparks/passwd" = {
     neededForUsers = true;
   };
+
+  secrets."k3s/node-token" = { };
 }

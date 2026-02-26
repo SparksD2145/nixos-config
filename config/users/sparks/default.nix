@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
-    ./sparks/home-manager
+    ./home-manager
+    ./system
   ];
 }
