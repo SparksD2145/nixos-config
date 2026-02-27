@@ -1,9 +1,10 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   # Nvidia
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -37,5 +38,16 @@
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  environment.systemPackages = with pkgs; [
+    intel-media-driver # for LIBVA_DRIVER_NAME=iHD
+    intel-vaapi-driver # for LIBVA_DRIVER_NAME=i965, works better for Firefox/Chromium
+    libvdpau-va-gl
+    nvidia-vaapi-driver
+  ];
+
+  environment.sessionVariables = {
+    VDPAU_DRIVER = "nvidia"; # Set Nvidia as the VDPAU driver
   };
 }

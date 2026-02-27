@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  plugins = with pkgs; [
+  networking.networkmanager.plugins = with pkgs; [
     networkmanager-openvpn
   ];
 }

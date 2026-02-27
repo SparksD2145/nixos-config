@@ -17,7 +17,12 @@
     ];
     packages = with pkgs; [
       kdePackages.kate
-      google-chrome
+      (google-chrome.override {
+        commandLineArgs = [
+          "--enable-features=UseOzonePlatform"
+          "--ozone-platform=wayland"
+        ];
+      })
       # thunderbird
     ];
     shell = pkgs.zsh;
