@@ -1,14 +1,11 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 {
   networking.networkmanager = {
     enable = true;
 
-    plugins = with pkgs; [
-      networkmanager-openvpn
-    ];
-
     ensureProfiles = {
       environmentFiles = [ config.sops.secrets."networking/wireless.conf".path ];
+
       profiles = {
         home-wifi = {
           connection.id = "home-wifi";

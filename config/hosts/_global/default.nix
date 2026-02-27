@@ -8,7 +8,7 @@
     ./nixos.nix
   ];
 
-  # List packages installed in system profile. To search, run:
+  # Globally installed system packages.
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim

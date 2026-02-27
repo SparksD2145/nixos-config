@@ -12,9 +12,6 @@
     # Include the results of the hardware scan.
     ./hardware.nix
 
-    # Standard configurations
-    ../../../../users/system.nix
-
     # K3s server configuration.
     ../../_shared/k3s-server.nix
   ];
