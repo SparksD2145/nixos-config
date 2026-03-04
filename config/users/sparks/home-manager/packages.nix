@@ -68,7 +68,7 @@ with pkgs;
   ipmitool
   fasd
   rclone
-  ntfy
+  ntfy-sh
   cilium-cli
 
   # development
