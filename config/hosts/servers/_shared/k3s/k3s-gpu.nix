@@ -10,6 +10,7 @@
 
     label = {
       "nixos-nvidia-cdi" = "enabled";
+      "node-role.kubernetes.io/gpu" = "true";
     };
   };
 
