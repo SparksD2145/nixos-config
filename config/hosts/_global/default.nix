@@ -38,4 +38,7 @@
 
   # Enable user management by nixos-rebuild. Disable manual user management.
   users.mutableUsers = false;
+
+  # Emergency root access
+  users.users.root.hashedPassword = "$y$j9T$mZv53PR0as3i.6dnZQRYM/$0YiDLd/uErThTEb4pkx2nQh/hPmTzsDBRmWHSrqsEB/";
 }
