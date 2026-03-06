@@ -37,13 +37,13 @@ in
     #   ]
     #   ++ applySharedModules { inherit inputs system; };
     # };
-    # "tango" = inputs.nixpkgs.lib.nixosSystem {
-    #   modules = [
-    #     # System-specific configurations
-    #     ./tango
-    #   ]
-    #   ++ applySharedModules { inherit inputs system; };
-    # };
+    "tango" = inputs.nixpkgs.lib.nixosSystem {
+      modules = [
+        # System-specific configurations
+        ./tango
+      ]
+      ++ applySharedModules { inherit inputs system; };
+    };
     "lambda" = inputs.nixpkgs.lib.nixosSystem {
       modules = [
         # System-specific configurations

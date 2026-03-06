@@ -8,10 +8,10 @@
       ]
     );
 
-    label = {
-      "nixos-nvidia-cdi" = "enabled";
-      "node-role.kubernetes.io/gpu" = "true";
-    };
+    nodeLabel = [
+      "nixos-nvidia-cdi=enabled"
+      "node-role.kubernetes.io/gpu=true"
+    ];
   };
 
   hardware.nvidia-container-toolkit.enable = true;
@@ -30,6 +30,8 @@
   hardware.graphics.enable32Bit = true;
 
   nixpkgs.config.nvidia.acceptLicense = true;
-  hardware.nvidia.datacenter.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia = {
+    datacenter.enable = true;
+    package = config.boot.kernelPackages.nvidiaPackages.dc;
+  };
 }
