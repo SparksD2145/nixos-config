@@ -18,7 +18,7 @@
           name = "origin";
           url = "https://github.com/SparksD2145/nixos-config.git";
           branches.main.name = "master";
-          poller.period = 1200; # Poll every 20 minutes
+          poller.period = 7200; # Poll every 2 hour
         }
       ];
     };
