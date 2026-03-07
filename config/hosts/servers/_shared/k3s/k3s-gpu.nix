@@ -1,37 +1,35 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   services.k3s = {
-
-    extraFlags = (
-      toString [
-        "--container-runtime-endpoint unix:///run/containerd/containerd.sock"
-      ]
-    );
-
     nodeLabel = [
-      "nixos-nvidia-cdi=enabled"
       "node-role.kubernetes.io/gpu=true"
     ];
   };
 
   hardware.nvidia-container-toolkit.enable = true;
+  hardware.nvidia-container-toolkit.mount-nvidia-executables = true;
 
-  virtualisation.containerd = {
-    enable = true;
-    settings = {
-      plugins."io.containerd.grpc.v1.cri" = {
-        enable_cdi = true;
-        cdi_spec_dirs = [ "/var/run/cdi" ];
-      };
-    };
+  environment.systemPackages = with pkgs; [
+    nvidia-container-toolkit
+  ];
+
+  hardware.nvidia = {
+    open = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable; # change to match your kernel
+    nvidiaSettings = true;
   };
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
 
-  nixpkgs.config.nvidia.acceptLicense = true;
-  hardware.nvidia = {
-    datacenter.enable = true;
-    package = config.boot.kernelPackages.nvidiaPackages.dc;
+  # Hack for getting the nvidia driver recognized
+  services.xserver = {
+    enable = false;
+    videoDrivers = [ "nvidia" ];
   };
+
+  nixpkgs.config.allowUnfreePackages = [
+    "nvidia-x11"
+    "nvidia-settings"
+  ];
 }
