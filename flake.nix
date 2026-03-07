@@ -33,7 +33,7 @@
       imports = [
         ./config/hosts/workstations/x86_64-linux
         ./config/hosts/servers/x86_64-linux
-        # ./config/hosts/servers/aarch64-linux
+        ./config/hosts/servers/aarch64-linux
       ];
 
       systems = [
