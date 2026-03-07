@@ -22,7 +22,7 @@
           name = "origin";
           url = "https://github.com/SparksD2145/nixos-config.git";
           branches.main.name = "master";
-          poller.period = 7200; # Poll every 2 hour
+          poller.period = 900; # Poll every 15 minutes
           auth.access_token_path = "/run/secrets/comin/gh_token";
         }
       ];
