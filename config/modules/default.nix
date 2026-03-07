@@ -17,7 +17,7 @@
         {
           name = "origin";
           url = "https://github.com/SparksD2145/nixos-config.git";
-          poller.period = 600; # Poll every 10 minutes
+          poller.period = 1200; # Poll every 20 minutes
         }
       ];
     };
