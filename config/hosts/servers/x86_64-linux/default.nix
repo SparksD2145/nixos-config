@@ -30,13 +30,13 @@ in
     #   ]
     #   ++ applySharedModules { inherit inputs system; };
     # };
-    # "xray" = inputs.nixpkgs.lib.nixosSystem {
-    #   modules = [
-    #     # System-specific configurations
-    #     ./xray
-    #   ]
-    #   ++ applySharedModules { inherit inputs system; };
-    # };
+    "xray" = inputs.nixpkgs.lib.nixosSystem {
+      modules = [
+        # System-specific configurations
+        ./xray
+      ]
+      ++ applySharedModules { inherit inputs system; };
+    };
     "tango" = inputs.nixpkgs.lib.nixosSystem {
       modules = [
         # System-specific configurations
