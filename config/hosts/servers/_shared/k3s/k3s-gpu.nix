@@ -1,11 +1,5 @@
 { config, pkgs, ... }:
 {
-  services.k3s = {
-    nodeLabel = [
-      "node-role.kubernetes.io/gpu=true"
-    ];
-  };
-
   hardware.nvidia-container-toolkit.enable = true;
   hardware.nvidia-container-toolkit.mount-nvidia-executables = true;
 
