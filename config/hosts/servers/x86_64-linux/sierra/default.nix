@@ -13,7 +13,7 @@
     ./hardware.nix
 
     # K3s server configuration.
-    # ../../_shared/k3s/k3s-server.nix
+    ../../_shared/k3s/k3s-server-master.nix
   ];
 
   # Bootloader.
