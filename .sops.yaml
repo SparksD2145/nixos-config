@@ -2,6 +2,7 @@ keys:
   - &admin_sparks age1jayaggqedpe7djyjpk0a74xxc2vlqzumeah39f548rnkjse76syst7t4pl
   - &workstation_alpha age1p6y752pv3ze0a82lec5lyv5n20xex3ennpscgj8ueu7tecqpfd5s4wqe2j
   - &workstation_delta age17auaf780ad2m0jm5e348c8fpjeak3795jw8dgnmj6yk02whykdyq5eh9ps
+  - &server_sierra age16ta5mdc8ywd0654q978a6t44ne02mmmg97xm9nnnpypk2e9ns9rs24lj6r
   - &server_tango age1gzravexcdmxsgflucyapyadqy3mxa3azha828d3hpxgeva5lccpsuxh25f
   - &server_lambda age106nfdadmxeg92rylfa5pxzhsv85whqgqkanjuwmpt8zydz880p0qnv2wym
 
@@ -12,5 +13,6 @@ creation_rules:
           - *admin_sparks
           - *workstation_alpha
           - *workstation_delta
+          - *server_sierra
           - *server_tango
           - *server_lambda
