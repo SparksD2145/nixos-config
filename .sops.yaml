@@ -3,6 +3,7 @@ keys:
   - &workstation_alpha age1p6y752pv3ze0a82lec5lyv5n20xex3ennpscgj8ueu7tecqpfd5s4wqe2j
   - &workstation_delta age17auaf780ad2m0jm5e348c8fpjeak3795jw8dgnmj6yk02whykdyq5eh9ps
   - &server_sierra age16ta5mdc8ywd0654q978a6t44ne02mmmg97xm9nnnpypk2e9ns9rs24lj6r
+  - &server_romeo age1g7r4kxtrqwpxmv5uaj4pkfjx0pedw5yx9gmka4ppy34kqmc8rvuqp9ak6j
   - &server_whiskey age1jnc2r4een0mkr6pqkmd2xp50vd92fmgfukeffxlfgfy34w00l5vqzyz3kq
   - &server_tango age1gzravexcdmxsgflucyapyadqy3mxa3azha828d3hpxgeva5lccpsuxh25f
   - &server_xray age13hh8mw2wh0l7pm2x2tj7wguep6ymv0kns2qfz8n4h5nl9ndtmg4qhnhzzq
@@ -16,6 +17,7 @@ creation_rules:
           - *workstation_alpha
           - *workstation_delta
           - *server_sierra
+          - *server_romeo
           - *server_whiskey
           - *server_tango
           - *server_xray
