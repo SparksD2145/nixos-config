@@ -44,6 +44,13 @@ in
       ]
       ++ applySharedModules { inherit inputs system; };
     };
+    "whiskey" = inputs.nixpkgs.lib.nixosSystem {
+      modules = [
+        # System-specific configurations
+        ./whiskey
+      ]
+      ++ applySharedModules { inherit inputs system; };
+    };
     "lambda" = inputs.nixpkgs.lib.nixosSystem {
       modules = [
         # System-specific configurations
