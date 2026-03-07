@@ -8,7 +8,7 @@
 
     # K3s server configuration.
     ../../_shared/k3s/k3s-agent.nix
-    ../../_shared/k3s/k3s-gpu.nix
+    ../../_shared/k3s/k3s-gpu-nvidia.nix
   ];
 
   # Bootloader.
