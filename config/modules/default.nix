@@ -1,4 +1,8 @@
-{ inputs, system, ... }:
+{
+  inputs,
+  system,
+  ...
+}:
 [
   # SOPS-NIX module for managing secrets
   inputs.sops-nix.nixosModules.sops
@@ -19,6 +23,7 @@
           url = "https://github.com/SparksD2145/nixos-config.git";
           branches.main.name = "master";
           poller.period = 7200; # Poll every 2 hour
+          auth.access_token_path = "/run/secrets/comin/gh_token";
         }
       ];
     };
