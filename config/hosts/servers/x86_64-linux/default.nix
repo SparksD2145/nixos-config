@@ -16,13 +16,13 @@ let
 in
 {
   flake.nixosConfigurations = {
-    # "sierra" = inputs.nixpkgs.lib.nixosSystem {
-    #   modules = [
-    #     # System-specific configurations
-    #     ./sierra
-    #   ]
-    #   ++ applySharedModules { inherit inputs system; };
-    # };
+    "sierra" = inputs.nixpkgs.lib.nixosSystem {
+      modules = [
+        # System-specific configurations
+        ./sierra
+      ]
+      ++ applySharedModules { inherit inputs system; };
+    };
     # "romeo" = inputs.nixpkgs.lib.nixosSystem {
     #   modules = [
     #     # System-specific configurations
