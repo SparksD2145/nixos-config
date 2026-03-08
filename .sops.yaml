@@ -6,7 +6,7 @@ keys:
   - &server_romeo age1g7r4kxtrqwpxmv5uaj4pkfjx0pedw5yx9gmka4ppy34kqmc8rvuqp9ak6j
   - &server_whiskey age1jnc2r4een0mkr6pqkmd2xp50vd92fmgfukeffxlfgfy34w00l5vqzyz3kq
   - &server_tango age1gzravexcdmxsgflucyapyadqy3mxa3azha828d3hpxgeva5lccpsuxh25f
-  - &server_xray age13hh8mw2wh0l7pm2x2tj7wguep6ymv0kns2qfz8n4h5nl9ndtmg4qhnhzzq
+  - &server_xray age18xs4rmgwdtpd0f7v89e4qgzu7r9ff0cg9g7duxxnm7gutlculdks52mqvx
   - &server_lambda age106nfdadmxeg92rylfa5pxzhsv85whqgqkanjuwmpt8zydz880p0qnv2wym
 
 creation_rules:
