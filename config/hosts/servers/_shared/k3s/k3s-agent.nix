@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   services.k3s = {
     enable = true;
@@ -7,5 +7,9 @@
     serverAddr = "https://10.10.1.11:6443";
 
     tokenFile = config.sops.secrets."k3s/node-token".path;
+  };
+
+  systemd.services.containerd.serviceConfig = {
+    LimitNOFILE = lib.mkForce null;
   };
 }
