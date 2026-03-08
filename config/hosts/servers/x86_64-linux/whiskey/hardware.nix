@@ -42,6 +42,15 @@
     ];
   };
 
+  fileSystems."/mnt/local" = {
+    device = "/dev/disk/by-id/ata-ST2000DM008-2FR102_ZK20DDF6";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "nofail"
+    ];
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

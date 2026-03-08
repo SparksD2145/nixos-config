@@ -36,6 +36,13 @@
     ];
   };
 
+  fileSystems."/mnt/local" = {
+    device = "zpool/local";
+    fsType = "zfs";
+    # the zfsutil option is needed when mounting zfs datasets without "legacy" mountpoints
+    options = [ "zfsutil" ];
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
