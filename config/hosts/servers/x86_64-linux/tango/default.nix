@@ -24,6 +24,7 @@
   boot.loader.grub.device = "/dev/disk/by-id/ata-Samsung_SSD_870_EVO_500GB_S6PXNU0X418853K"; # or "nodev" for efi only
 
   networking.hostName = "tango"; # Define your hostname.
+  networking.hostId = "8425e341"; # required for zfs, can be set to any random string, but must be unique for each machine in a cluster
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking

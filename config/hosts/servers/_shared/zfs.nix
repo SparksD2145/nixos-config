@@ -21,4 +21,5 @@ in
 {
   # Note this might jump back and forth as kernels are added or removed.
   boot.kernelPackages = latestKernelPackage;
+  boot.supportedFilesystems = [ "zfs" ];
 }
