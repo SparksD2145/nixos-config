@@ -51,6 +51,13 @@ in
       ]
       ++ applySharedModules { inherit inputs system; };
     };
+    "omega" = inputs.nixpkgs.lib.nixosSystem {
+      modules = [
+        # System-specific configurations
+        ./omega
+      ]
+      ++ applySharedModules { inherit inputs system; };
+    };
     "vm-gpu-1" = inputs.nixpkgs.lib.nixosSystem {
       modules = [
         # System-specific configurations
