@@ -38,6 +38,15 @@
     ];
   };
 
+  fileSystems."/mnt/local" = {
+    device = "/dev/disk/by-id/scsi-36c81f660e209af0024db2ede06115d1d";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "nofail"
+    ];
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
