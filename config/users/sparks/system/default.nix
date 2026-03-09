@@ -17,6 +17,7 @@
     ];
     shell = pkgs.zsh;
 
+    # Define SSH authorized keys for this user. You can also use 'ssh-import-id' to fetch keys from GitHub or other services.
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINAZvl1OGc2mmdcI9tTAwwdmDaV+aKeJ0mDJB3sdwnbk"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICGu/I2uiUKP5qRB7+IcXapKMyOHEJ/CE2/WPpwcmUu9"

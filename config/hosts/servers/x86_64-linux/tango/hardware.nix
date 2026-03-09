@@ -36,6 +36,7 @@
     ];
   };
 
+  # Enable software RAID for the local storage array.
   boot.swraid.enable = true;
   boot.swraid.mdadmConf = ''
     MAILADDR root
@@ -44,6 +45,10 @@
   fileSystems."/mnt/local" = {
     device = "/dev/md0";
     fsType = "ext4";
+    options = [
+      "defaults"
+      "nofail"
+    ];
   };
 
   swapDevices = [ ];

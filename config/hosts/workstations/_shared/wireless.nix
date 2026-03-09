@@ -1,5 +1,6 @@
 { config, ... }:
 {
+  # Wireless network configuration for workstations. This module is imported by all workstation hosts, but not by servers.
   networking.networkmanager = {
     enable = true;
 
