@@ -8,6 +8,7 @@ keys:
   - &server_tango age1gzravexcdmxsgflucyapyadqy3mxa3azha828d3hpxgeva5lccpsuxh25f
   - &server_xray age18xs4rmgwdtpd0f7v89e4qgzu7r9ff0cg9g7duxxnm7gutlculdks52mqvx
   - &server_lambda age106nfdadmxeg92rylfa5pxzhsv85whqgqkanjuwmpt8zydz880p0qnv2wym
+  - &server_vm_gpu_1
 
 creation_rules:
   - path_regex: config/.*\.sops\.(yaml|json|env|ini)$
