@@ -7,9 +7,6 @@
     # Include the results of the hardware scan.
     ./hardware.nix
 
-    # Include the ZFS configuration.
-    ../../_shared/zfs.nix
-
     # K3s agent configuration.
     ../../_shared/k3s/k3s-agent.nix
     ./k3s-extras.nix
