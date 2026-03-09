@@ -7,6 +7,9 @@
     # Include the results of the hardware scan.
     ./hardware.nix
 
+    # Include the ZFS configuration.
+    ../../_shared/zfs.nix
+
     # K3s agent configuration.
     ../../_shared/k3s/k3s-agent.nix
     ./k3s-extras.nix
@@ -18,9 +21,10 @@
   # boot.loader.grub.efiInstallAsRemovable = true;
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot.loader.grub.device = "/dev/disk/by-id/ata-Samsung_SSD_860_EVO_500GB_S3Z1NB0K182540Z"; # or "nodev" for efi only
 
   networking.hostName = "lambda"; # Define your hostname.
+  networking.hostId = "8425e342"; # required for zfs, can be set to any random string, but must be unique for each machine in a cluster
 
   # Enable networking
   networking.networkmanager.enable = true;
