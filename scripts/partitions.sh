@@ -1,0 +1,22 @@
+# EDIT THIS FILE BEFORE RUNNING
+
+# LABEL
+sudo mkfs.fat -F 32 /dev/sda1
+sudo fatlabel /dev/sda1 NIXBOOT
+sudo mkfs.ext4 /dev/sda2 -L NIXROOT
+
+sleep 5;
+
+# MOUNT
+sudo mount /dev/disk/by-label/NIXROOT /mnt
+sudo mkdir -p /mnt/boot
+sudo mount /dev/disk/by-label/NIXBOOT /mnt/boot
+
+# SWAP
+sudo dd if=/dev/zero of=/mnt/.swapfile bs=1024 count=2097152 # 2GB size
+sudo chmod 600 /mnt/.swapfile
+sudo mkswap /mnt/.swapfile
+sudo swapon /mnt/.swapfile
+
+# CONFIG
+sudo nixos-generate-config --root /mnt
