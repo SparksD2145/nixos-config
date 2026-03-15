@@ -21,6 +21,10 @@
       )
     ];
 
+    # Enable direnv
+    programs.direnv.enable = true;
+    programs.direnv.nix-direnv.enable = true;
+
     # basic configuration of git, please change to your own
     programs.git = {
       enable = true;

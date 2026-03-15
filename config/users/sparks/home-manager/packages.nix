@@ -13,7 +13,6 @@ with pkgs;
   yq
   eza # A modern replacement for 'ls'
   fzf # A command-line fuzzy finder
-  direnv
 
   # networking tools
   mtr # A network diagnostic tool
