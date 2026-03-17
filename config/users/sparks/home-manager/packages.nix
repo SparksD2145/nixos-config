@@ -68,7 +68,6 @@ with pkgs;
   fasd
   rclone
   ntfy-sh
-  cilium-cli
 
   # development
   nodejs_24
@@ -85,11 +84,4 @@ with pkgs;
   strace # system call monitoring
   ltrace # library call monitoring
   lsof # list open files
-
-  # system tools
-  sysstat
-  lm_sensors # for `sensors` command
-  ethtool
-  pciutils # lspci
-  usbutils # lsusb
 ]

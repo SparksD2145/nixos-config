@@ -15,7 +15,13 @@
     wget
     curl
     tmux
-    usbutils
+
+    # System
+    sysstat
+    lm_sensors # for `sensors` command
+    ethtool
+    pciutils # lspci
+    usbutils # lsusb
   ];
 
   # Allow unfree packages
