@@ -18,10 +18,5 @@ with pkgs;
   incron # Cron-like daemon which handles filesystem events
 
   # Extras
-  (google-chrome.override {
-    commandLineArgs = [
-      "--enable-features=UseOzonePlatform"
-      "--ozone-platform=wayland"
-    ];
-  })
+  google-chrome
 ]

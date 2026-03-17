@@ -9,7 +9,6 @@
 
     # K3s agent configuration.
     ../../_shared/k3s/k3s-agent.nix
-    ./k3s-extras.nix
   ];
 
   # Use the GRUB 2 boot loader.
