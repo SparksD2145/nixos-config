@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }:
 with pkgs;
 [
-  vscode
+  vscodium
   virt-manager
   remmina
   wl-clipboard
