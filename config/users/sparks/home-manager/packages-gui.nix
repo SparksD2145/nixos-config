@@ -1,7 +1,6 @@
 { inputs, pkgs, ... }:
 with pkgs;
 [
-  vscodium
   virt-manager
   remmina
   wl-clipboard

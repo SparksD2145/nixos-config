@@ -130,6 +130,20 @@
 
     };
 
+    programs.vscode = {
+      enable = true;
+      package = pkgs.vscodium;
+      profiles.default.extensions = with pkgs.vscode-extensions; [
+        vscodevim.vim
+        redhat.vscode-yaml
+        bbenoist.nix
+        editorconfig.editorconfig
+        ms-python.python
+        ms-azuretools.vscode-docker
+        ms-vscode-remote.remote-ssh
+      ];
+    };
+
     # The state version is required and should stay at the version you
     # originally installed.
     home.stateVersion = "25.05";
