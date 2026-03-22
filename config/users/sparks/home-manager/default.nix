@@ -55,6 +55,7 @@
       # set some aliases, feel free to add more or remove some
       shellAliases = {
         k = "kubectl";
+        code = "codium";
         urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
         urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
       };
@@ -68,6 +69,7 @@
 
       shellAliases = {
         ll = "ls -lha";
+        code = "codium";
         update = "sudo nixos-rebuild switch --flake 'github:SparksD2145/nixos-config'";
         fluxupdate = "git add .; git commit --amend --no-edit; git push -f; git push gitlab -f; flux reconcile kustomization flux-system --with-source;";
 
