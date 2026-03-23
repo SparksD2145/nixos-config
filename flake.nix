@@ -13,7 +13,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # nix-flatpak, used for declaratively managing flatpaks
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
     # flake-parts, used for modularizing NixOS configurations
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -33,7 +33,6 @@
       imports = [
         ./config/hosts/workstations/x86_64-linux
         ./config/hosts/servers/x86_64-linux
-        # ./config/hosts/servers/aarch64-linux
       ];
 
       systems = [
