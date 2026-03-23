@@ -168,7 +168,7 @@
         ms-python.python
         ms-azuretools.vscode-docker
         ms-vscode-remote.remote-ssh
-        VisualStudioExptTeam.vscodeintellicode
+        visualstudioexptteam.vscodeintellicode
         eamodio.gitlens
       ];
     };
