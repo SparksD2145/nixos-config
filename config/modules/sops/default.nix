@@ -22,4 +22,5 @@
   secrets."k3s/node-token" = { };
 
   secrets."comin/gh_token" = { };
+  secrets."comin/glab_token" = { };
 }
