@@ -37,6 +37,7 @@ with pkgs;
   parted
   sshpass
   sshfs
+  urbackup-client
 
   # nix related
   #
