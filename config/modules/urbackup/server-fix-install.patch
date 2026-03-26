@@ -1,0 +1,35 @@
+diff --git a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -142,7 +142,7 @@ urbackup_mount_helper_CFLAGS=$(SUID_CFLAGS)
+ urbackup_mount_helper_CPPFLAGS=$(FORTIFY_FLAGS)
+ urbackup_mount_helper_LDFLAGS=$(SUID_LDFLAGS) $(FORTIFY_ldflags)
+
+-install-exec-local: defaults_server init.d_server logrotate_urbackupsrv
++disable-install-exec-local: defaults_server init.d_server logrotate_urbackupsrv
+ if INSTALL_INITD
+ if PACKAGING
+    $(INSTALL) -D "$(srcdir)/init.d_server" "$(DESTDIR)$(sysconfdir)/init.d/urbackupsrv"
+@@ -168,9 +168,9 @@ endif
+ endif
+
+ install-data-local: urbackup/status.htm urbackupserver/www/js/*.js urbackupserver/www/js/vs/*.js urbackupserver/www/js/vs/base/worker/* urbackupserver/www/js/vs/basic-languages/src/* urbackupserver/www/js/vs/editor/* urbackupserver/www/*.htm urbackupserver/www/*.ico urbackupserver/www/css/*.css urbackupserver/www/images/*.png urbackupserver/www/images/*.gif urbackupserver/www/fonts/* urbackupserver/urbackup_ecdsa409k1.pub urbackupserver/www/swf/* server-license.txt urbackup/dataplan_db.txt
+-   $(INSTALL) $(INSTALL_OPTS) -m 744 -d "$(DESTDIR)$(localstatedir)/urbackup"
+-   chmod +x "$(DESTDIR)$(localstatedir)/urbackup"
+-   $(INSTALL_DATA) $(INSTALL_OPTS) $(srcdir)/urbackup/dataplan_db.txt "$(DESTDIR)$(localstatedir)/urbackup/dataplan_db.txt"
++   echo WARNING: disabled running command "$(INSTALL) $(INSTALL_OPTS) -m 744 -d \"$(DESTDIR)$(localstatedir)/urbackup\""
++   echo WARNING: disabled running command "chmod +x \"$(DESTDIR)$(localstatedir)/urbackup\""
++   echo WARNING: disabled running command "$(INSTALL_DATA) $(INSTALL_OPTS) $(srcdir)/urbackup/dataplan_db.txt \"$(DESTDIR)$(localstatedir)/urbackup/dataplan_db.txt\""
+    $(INSTALL) $(INSTALL_OPTS) -m 744 -d "$(DESTDIR)$(datadir)/urbackup"
+    chmod +x "$(DESTDIR)$(datadir)/urbackup"
+    $(INSTALL) $(INSTALL_OPTS) -m 744 -d "$(DESTDIR)$(datadir)/urbackup/www"
+@@ -221,8 +221,8 @@ if !PACKAGING
+ endif
+
+ install-exec-hook:
+-   chmod +s $(DESTDIR)$(bindir)/urbackup_snapshot_helper
+-   chmod +s $(DESTDIR)$(bindir)/urbackup_mount_helper
++   echo WARNING: disabled running command "chmod +s $(DESTDIR)$(bindir)/urbackup_snapshot_helper"
++   echo WARNING: disabled running command "chmod +s $(DESTDIR)$(bindir)/urbackup_mount_helper"
+
+ cryptoplugin_headers = cryptoplugin/AESEncryption.h cryptoplugin/AESDecryption.h cryptoplugin/IAESDecryption.h cryptoplugin/ICryptoFactory.h cryptoplugin/pluginmgr.h cryptoplugin/IAESEncryption.h cryptoplugin/CryptoFactory.h cryptoplugin/IZlibCompression.h cryptoplugin/IZlibDecompression.h cryptoplugin/ZlibCompression.h cryptoplugin/ZlibDecompression.h cryptoplugin/cryptopp_inc.h cryptoplugin/AESGCMDecryption.h cryptoplugin/AESGCMEncryption.h cryptoplugin/ECDHKeyExchange.h cryptoplugin/IAESGCMDecryption.h cryptoplugin/IAESGCMEncryption.h cryptoplugin/IECDHKeyExchange.h

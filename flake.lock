@@ -140,6 +140,21 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1774386573,
+        "narHash": "sha256-4hAV26quOxdC6iyG7kYaZcM3VOskcPUrdCQd/nx8obc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "46db2e09e1d3f113a13c0d7b81e2f221c63b8ce9",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
     "root": {
       "inputs": {
         "comin": "comin",
@@ -147,7 +162,8 @@
         "home-manager": "home-manager",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_2",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "urbackup": "urbackup"
       }
     },
     "sops-nix": {
@@ -187,6 +203,20 @@
         "repo": "treefmt-nix",
         "type": "github"
       }
+    },
+    "urbackup": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "path": "./config/modules/urbackup",
+        "type": "path"
+      },
+      "original": {
+        "path": "./config/modules/urbackup",
+        "type": "path"
+      },
+      "parent": []
     }
   },
   "root": "root",
