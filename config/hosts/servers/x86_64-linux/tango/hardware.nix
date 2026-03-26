@@ -41,7 +41,7 @@
   boot.swraid.mdadmConf = ''
     MAILADDR root
     ARRAY /dev/md0 metadata=1.2 UUID=82dc7ed3:fb8c1b85:43715eb4:3fa9797c
-    ARRAY /dev/md1 metadata=1.2 spares=1 UUID=01156a85:a56b7190:0b2f948d:0ec36a5b
+    ARRAY /dev/md1 metadata=1.2 spares=1 UUID=99782a41:fe0361a2:e9e13ed4:a2c640d1
   '';
   fileSystems."/mnt/local" = {
     device = "/dev/md0";
