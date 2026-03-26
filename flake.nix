@@ -24,6 +24,7 @@
 
     # Urbackup - adds client and server libraries.
     urbackup.url = "path:./config/modules/urbackup";
+    urbackup.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
