@@ -36,78 +36,36 @@
           with final;
           stdenv.mkDerivation rec {
             pname = "urbackup-client";
-            version = "2.5.25";
+            version = "2.5.29";
 
-            src = fetchzip {
-              url = "https://hndl.urbackup.org/Client/${version}/urbackup-client-${version}.tar.gz";
-              sha256 = "sha256-i1g3xUhspqQRfIUhy6STOWNuncK3tMFocJw652r1X9g=";
+            src = fetchFromGitHub {
+              owner = "uroni";
+              repo = "urbackup_backend";
+              rev = "refs/tags/${version}client";
+              hash = "sha256-6oxSaLDg0ca8vFwgprB0w52cg/EHZ1H94f0AHKTMt2w=";
             };
+
+            # src = fetchzip {
+            #   url = "https://hndl.urbackup.org/Client/${version}/urbackup-client-${version}.tar.gz";
+            #   sha256 = "sha256-i1g3xUhspqQRfIUhy6STOWNuncK3tMFocJw652r1X9g=";
+            # };
 
             enableParallelBuilding = true;
 
-            patches = [
-              ./client-fix-install.patch
-            ];
+            # patches = [
+            #   ./client-fix-install.patch
+            # ];
 
             # Needed for building from the Git source (versioned source downloads are pre-configured to server or client)
-            # postPatch = ''
-            #   patchShebangs --build switch_build.sh
-            #   ./switch_build.sh client
-            # '';
+            postPatch = ''
+              patchShebangs --build switch_build.sh
+              ./switch_build.sh client
+            '';
 
             configureFlags = [
               "--with-crypto-prefix=${cryptopp.dev}"
               "--localstatedir=/var/lib/urbackup-client"
-            ];
-
-            nativeBuildInputs = [
-              autoreconfHook
-              pkg-config
-            ];
-
-            buildInputs = [
-              wxGTK32
-              zlib
-              zstd
-              curl
-              cryptopp
-            ];
-          };
-
-        urbackup-server =
-          with final;
-          stdenv.mkDerivation rec {
-            pname = "urbackup-server";
-            version = "2.5.32";
-
-            src = fetchzip {
-              url = "https://hndl.urbackup.org/Server/${version}/urbackup-server-${version}.tar.gz";
-              sha256 = "sha256-LEn77/sB3Y7U/opQUandDAamFkrMDcVwVUBrCKUI3ys=";
-            };
-
-            #src = fetchgit {
-            #  url = "https://github.com/uroni/urbackup_backend";
-            #  rev = "bbfe4b44aa6ca0fb6729347f2fce6018a4be8898";
-            #  sha256 = "sha256-XOHid1TflJ3Kg2IRjIzsHT6/yGCXP2UzbQ6IQPXBMg0=x";
-            #};
-
-            enableParallelBuilding = true;
-
-            patches = [
-              ./server-fix-install.patch
-            ];
-
-            # Needed for building from the Git source (versioned source downloads are pre-configured to server or client)
-            # postPatch = ''
-            #   patchShebangs --build switch_build.sh
-            #   ./switch_build.sh server
-            # '';
-
-            configureFlags = [
-              # "--with-mountvhd"
-              "--enable-packaging"
-              "--with-crypto-prefix=${cryptopp.dev}"
-              "--localstatedir=/var/lib/urbackup-server"
+              "--enable-headless"
             ];
 
             nativeBuildInputs = [
@@ -118,17 +76,19 @@
             buildInputs = [
               zlib
               zstd
-              curl
+              # curl
               cryptopp
-              # fuse
+              curlWithGnuTls
+              autoconf
+              automake
+              libtool
             ];
           };
-
       };
 
       # Provide some binary packages for selected system types.
       packages = forAllSystems (system: {
-        inherit (nixpkgsFor.${system}) urbackup-server urbackup-client;
+        inherit (nixpkgsFor.${system}) urbackup-client;
       });
 
       # The default package for 'nix build'. This makes sense if the
@@ -138,187 +98,6 @@
 
       # A NixOS module, if applicable (e.g. if the package provides a system service).
       nixosModules = {
-        urbackup-server =
-          {
-            config,
-            lib,
-            pkgs,
-            ...
-          }:
-          with lib;
-          let
-            cfg = config.services.urbackup-server;
-            settingsFormat = pkgs.formats.keyValue { };
-          in
-          {
-            imports = [ ];
-            options.services.urbackup-server = {
-              enable = mkEnableOption (mkDoc "UrBackup server daemon");
-
-              user = mkOption {
-                type = types.str;
-                default = "root"; # "urbackup-server";
-                description = mdDoc ''
-                  User account under which the UrBackup server runs.
-                '';
-              };
-
-              group = mkOption {
-                type = types.str;
-                default = "root"; # "urbackup-server";
-                description = mdDoc ''
-                  Group under which the UrBackup server runs.
-                '';
-              };
-
-              otherSettings = mkOption {
-                type = settingsFormat.type;
-                default = { };
-                description = ''
-                  Configuration for the UrBackup server. See https://github.com/uroni/urbackup_backend/blob/2.5.x/defaults_server
-                '';
-              };
-
-              portForward = mkOption {
-                type = lib.types.bool;
-                default = true;
-                description = lib.mdDoc ''
-                  Whether allow UrBackup ports through the firewall.
-                '';
-              };
-
-              cgiPort = mkOption {
-                type = types.port;
-                default = 55413;
-                description = mdDoc ''
-                  Port to use for the UrBackup server FastCGI web interface.
-                '';
-              };
-
-              httpPort = mkOption {
-                type = types.port;
-                default = 55414;
-                description = mdDoc ''
-                  Port to use for the UrBackup server HTTP web interface.
-                '';
-              };
-
-              internetPort = mkOption {
-                type = types.port;
-                default = 55415;
-                description = mdDoc ''
-                  Port to use for the UrBackup server internet client.
-                '';
-              };
-            };
-            config = {
-              nixpkgs.overlays = [ self.overlay ];
-
-              environment.systemPackages = [ pkgs.urbackup-server ];
-
-              users.users = mkIf (cfg.user == "urbackup-server") {
-                urbackup-server = {
-                  group = cfg.group;
-                  description = "UrBackup server daemon user";
-                  isSystemUser = true;
-                };
-              };
-
-              users.groups = mkIf (cfg.group == "urbackup-server") {
-                urbackup-server = { };
-              };
-
-              # See https://github.com/uroni/urbackup_backend/blob/2.5.x/defaults_server
-              services.urbackup-server.otherSettings = {
-                # Defaults for urbackupsrv initscript
-
-                #Port for FastCGI requests
-                FASTCGI_PORT = mkDefault cfg.cgiPort;
-
-                #Enable internal HTTP server
-                #   Required for serving web interface without FastCGI
-                #   and for websocket connections from client
-                HTTP_SERVER = mkDefault true;
-
-                #Port for the web interface
-                #(if internal HTTP server is enabled)
-                HTTP_PORT = mkDefault cfg.httpPort;
-
-                INTERNET_PORT = mkDefault cfg.internetPort;
-
-                #Bind HTTP server to localhost only
-                HTTP_LOCALHOST_ONLY = mkDefault true;
-
-                #Bind Internet port to localhost only
-                INTERNET_LOCALHOST_ONLY = false;
-
-                #log file name
-                LOGFILE = mkDefault "/var/log/urbackup-server/urbackup.log";
-
-                #Either debug,warn,info or error
-                LOGLEVEL = mkDefault "debug";
-
-                #Temporary file directory
-                # -- this may get very large depending on the advanced settings
-                DAEMON_TMPDIR = mkDefault "/tmp";
-
-                #Tmp file directory for sqlite temporary tables.
-                #You might want to put the databases on another filesystem than the other temporary files.
-                #Default is the same as DAEMON_TMPDIR
-                SQLITE_TMPDIR = mkDefault "";
-
-                #Interfaces from which to send broadcasts. (Default: all).
-                #Comma separated -- e.g. "eth0,eth1"
-                BROADCAST_INTERFACES = mkDefault "";
-
-                # Enable better error messages if a user cannot be found during login
-                ALLOW_USER_ENUMERATION = mkDefault true;
-
-                #User the urbackupsrv process runs as
-                USER = mkDefault cfg.user;
-              };
-
-              networking.firewall = mkIf cfg.portForward {
-                allowedTCPPorts = [
-                  cfg.cgiPort
-                  cfg.httpPort
-                  cfg.internetPort
-                ];
-                allowedUDPPorts = [
-                  # UDP broadcast to discover local clients
-                  35623
-                ];
-              };
-
-              systemd.services.urbackup-server = mkIf cfg.enable {
-                description = "UrBackup Client/Server Network Backup System";
-                after = [
-                  "syslog.target"
-                  "network.target"
-                ];
-                wantedBy = [ "multi-user.target" ];
-                path = [
-                  pkgs.urbackup-server
-                  config.boot.zfs.package
-                  # pkgs.libguestfs
-                ];
-                serviceConfig = {
-                  User = cfg.user;
-                  Group = cfg.group;
-                  ExecStart = "${pkgs.urbackup-server}/bin/urbackupsrv run --config ${settingsFormat.generate "urbackupsrv" cfg.otherSettings} --no-consoletime --loglevel debug";
-                  StateDirectory = "urbackup-server/urbackup";
-                  WorkingDirectory = "/var/lib/urbackup-server"; # Overridden by a hardcoded path in the binary(?)
-                  LogsDirectory = "urbackup-server";
-                  TasksMax = "infinity";
-                  # CAP_SYS_ADMIN needed to mount ZFS datasets
-                  # CAP_SETUID needed to switch to root user
-                  # CAP_SYS_RESOURCE needed to adjust `nice` values
-                  # CAP_NET_ADMIN needed to send UDP broadcasts to find local clients
-                  AmbientCapabilities = "CAP_SYS_ADMIN CAP_SETUID CAP_SYS_RESOURCE CAP_NET_ADMIN";
-                };
-              };
-            };
-          };
         urbackup-client =
           {
             config,
