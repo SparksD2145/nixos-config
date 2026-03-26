@@ -141,7 +141,7 @@
             };
 
             config = {
-              nixpkgs.overlays = [ self.overlay ];
+              # nixpkgs.overlays = [ self.overlay ];
 
               environment.systemPackages = [ pkgs.urbackup-client ];
 
