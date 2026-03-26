@@ -1,3 +1,3 @@
 {
-  service.urbackup-client.enable = true;
+  services.urbackup-client.enable = true;
 }
