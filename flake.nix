@@ -21,10 +21,6 @@
     # comin, used for managing gitops configurations
     comin.url = "github:nlewo/comin";
     comin.inputs.nixpkgs.follows = "nixpkgs";
-
-    # Urbackup - adds client and server libraries.
-    urbackup.url = "path:./config/modules/urbackup";
-    urbackup.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
