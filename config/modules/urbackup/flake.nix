@@ -36,11 +36,11 @@
           with final;
           stdenv.mkDerivation rec {
             pname = "urbackup-client";
-            version = "2.5.29";
+            version = "2.5.25";
 
             src = fetchzip {
               url = "https://hndl.urbackup.org/Client/${version}/urbackup-client-${version}.tar.gz";
-              sha256 = "sha256-y1dtuc6P9+6K0CqXMzf4IrLqs8G62LZhrR8gauC1R3Y=";
+              sha256 = "sha256-i1g3xUhspqQRfIUhy6STOWNuncK3tMFocJw652r1X9g=";
             };
 
             enableParallelBuilding = true;
