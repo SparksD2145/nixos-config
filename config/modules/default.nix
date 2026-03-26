@@ -35,4 +35,8 @@
       ];
     };
   })
+
+  # Enable urbackup backups
+  inputs.urbackup.nixosModules.urbackup-client
+  ({ services.urbackup-client.enable = true; })
 ]
