@@ -30,61 +30,61 @@
     {
 
       # A Nixpkgs overlay.
-      overlay = final: prev: {
+      # overlay = final: prev: {
 
-        urbackup-client =
-          with final;
-          stdenv.mkDerivation rec {
-            pname = "urbackup-client";
-            version = "2.5.29";
+      #   urbackup-client =
+      #     with final;
+      #     stdenv.mkDerivation rec {
+      #       pname = "urbackup-client";
+      #       version = "2.5.29";
 
-            src = fetchFromGitHub {
-              owner = "uroni";
-              repo = "urbackup_backend";
-              rev = "refs/tags/${version}client";
-              hash = "sha256-6oxSaLDg0ca8vFwgprB0w52cg/EHZ1H94f0AHKTMt2w=";
-            };
+      #       src = fetchFromGitHub {
+      #         owner = "uroni";
+      #         repo = "urbackup_backend";
+      #         rev = "refs/tags/${version}client";
+      #         hash = "sha256-6oxSaLDg0ca8vFwgprB0w52cg/EHZ1H94f0AHKTMt2w=";
+      #       };
 
-            # src = fetchzip {
-            #   url = "https://hndl.urbackup.org/Client/${version}/urbackup-client-${version}.tar.gz";
-            #   sha256 = "sha256-i1g3xUhspqQRfIUhy6STOWNuncK3tMFocJw652r1X9g=";
-            # };
+      #       # src = fetchzip {
+      #       #   url = "https://hndl.urbackup.org/Client/${version}/urbackup-client-${version}.tar.gz";
+      #       #   sha256 = "sha256-i1g3xUhspqQRfIUhy6STOWNuncK3tMFocJw652r1X9g=";
+      #       # };
 
-            enableParallelBuilding = true;
+      #       enableParallelBuilding = true;
 
-            # patches = [
-            #   ./client-fix-install.patch
-            # ];
+      #       # patches = [
+      #       #   ./client-fix-install.patch
+      #       # ];
 
-            # Needed for building from the Git source (versioned source downloads are pre-configured to server or client)
-            postPatch = ''
-              patchShebangs --build switch_build.sh
-              ./switch_build.sh client
-            '';
+      #       # Needed for building from the Git source (versioned source downloads are pre-configured to server or client)
+      #       postPatch = ''
+      #         patchShebangs --build switch_build.sh
+      #         ./switch_build.sh client
+      #       '';
 
-            configureFlags = [
-              "--with-crypto-prefix=${cryptopp.dev}"
-              "--localstatedir=/var/lib/urbackup-client"
-              "--enable-headless"
-            ];
+      #       configureFlags = [
+      #         "--with-crypto-prefix=${cryptopp.dev}"
+      #         "--localstatedir=/var/lib/urbackup-client"
+      #         "--enable-headless"
+      #       ];
 
-            nativeBuildInputs = [
-              autoreconfHook
-              pkg-config
-            ];
+      #       nativeBuildInputs = [
+      #         autoreconfHook
+      #         pkg-config
+      #       ];
 
-            buildInputs = [
-              zlib
-              zstd
-              # curl
-              cryptopp
-              curlWithGnuTls
-              autoconf
-              automake
-              libtool
-            ];
-          };
-      };
+      #       buildInputs = [
+      #         zlib
+      #         zstd
+      #         # curl
+      #         cryptopp
+      #         curlWithGnuTls
+      #         autoconf
+      #         automake
+      #         libtool
+      #       ];
+      #     };
+      # };
 
       # Provide some binary packages for selected system types.
       packages = forAllSystems (system: {
