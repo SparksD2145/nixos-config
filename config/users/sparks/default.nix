@@ -46,6 +46,11 @@
       )
     ];
 
+    # ntfy config
+    home.file.".config/ntfy/client.yml" = {
+      source = ./dotfiles/ntfy.yaml;
+    };
+
     # Enable direnv
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
