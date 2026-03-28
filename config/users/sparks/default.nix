@@ -6,7 +6,7 @@
 }:
 
 {
-
+  # System Configuration
   users.users.sparks = {
     # Define a user account. Don't forget to set a password with 'passwd'.
     isNormalUser = true;
@@ -31,6 +31,7 @@
     hashedPasswordFile = config.sops.secrets."users/sparks/passwd".path;
   };
 
+  # Home Manager configuration
   home-manager.users.sparks = {
     home.username = "sparks";
     home.homeDirectory = "/home/sparks";
