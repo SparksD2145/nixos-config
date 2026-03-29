@@ -18,10 +18,6 @@
   secrets."users/sparks/passwd" = {
     neededForUsers = true;
   };
-  secrets."users/sparks/u2f_keys" = {
-    neededForUsers = true;
-    path = "/home/sparks/.config/Yubico/u2f_keys";
-  };
 
   secrets."k3s/node-token" = { };
 
