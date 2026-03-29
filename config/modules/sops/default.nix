@@ -23,7 +23,9 @@
         # age.generateKey = true;
 
         # This is the actual specification of the secrets.
+
         secrets."networking/wireless.conf" = { };
+
         secrets."users/sparks/passwd" = {
           neededForUsers = true;
         };

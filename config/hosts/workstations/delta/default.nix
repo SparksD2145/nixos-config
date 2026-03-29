@@ -1,6 +1,6 @@
 { inputs, self, ... }:
 {
-  flake.nixosConfigurations.alpha = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.delta = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
 
     modules = [

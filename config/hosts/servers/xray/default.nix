@@ -1,6 +1,6 @@
 { inputs, self, ... }:
 {
-  flake.nixosConfigurations.alpha = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.xray = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
 
     modules = [
@@ -17,7 +17,9 @@
       # Shared Host Modules
       self.nixosModules.hosts-global
       self.nixosModules.hosts-users
-      self.nixosModules.hosts-workstations-shared
+
+      # K3s
+      self.nixosModules.k3s-server-other
     ];
   };
 }
