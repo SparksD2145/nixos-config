@@ -6,6 +6,7 @@
   imports = [
     ./i18n.nix
     ./nixos.nix
+    ./security.nix
   ];
 
   # Globally installed system packages.
