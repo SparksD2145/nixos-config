@@ -18,6 +18,9 @@
     # flake-parts, used for modularizing NixOS configurations
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    # import-tree, used to import modularized configurations
+    import-tree.url = "github:vic/import-tree";
+
     # comin, used for managing gitops configurations
     comin.url = "github:nlewo/comin";
     comin.inputs.nixpkgs.follows = "nixpkgs";
@@ -29,28 +32,7 @@
       ...
     }@inputs:
 
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        ./config/hosts/workstations/x86_64-linux
-        ./config/hosts/servers/x86_64-linux
-      ];
-
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-
-      perSystem =
-        { lib, system, ... }:
-        {
-          # Make our overlay available to the devShell
-          # "Flake parts does not yet come with an endorsed module that initializes the pkgs argument.""
-          # So we must do this manually; https://flake.parts/overlays#consuming-an-overlay
-          _module.args.pkgs = import inputs.nixpkgs {
-            inherit system;
-            overlays = lib.attrValues self.overlays;
-            config.allowUnfree = true;
-          };
-        };
-    };
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      inputs.import-tree.match ".*/default\.nix" ./config
+    );
 }

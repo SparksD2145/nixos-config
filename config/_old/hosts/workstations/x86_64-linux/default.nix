@@ -14,8 +14,6 @@ let
       # Workstation shared
       ../_shared
 
-      # Nix-Flatpak module for managing flatpaks declaratively
-      inputs.nix-flatpak.nixosModules.nix-flatpak
     ]
     ++ (import ../../../modules { inherit inputs system; });
 in

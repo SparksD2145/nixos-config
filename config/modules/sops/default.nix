@@ -1,26 +1,38 @@
+{ inputs, ... }:
 {
-  # This will add secrets.yml to the nix store
-  # You can avoid this by adding a string to the full path instead, i.e.
-  # sops.defaultSopsFile = "/root/.sops/secrets/example.yaml";
-  defaultSopsFile = ./secrets.sops.yaml;
+  flake.nixosModules.sops =
+    { pkgs, ... }:
+    {
+      imports = [
+        inputs.sops-nix.nixosModules.sops
+      ];
 
-  # This will automatically import SSH keys as age keys
-  age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      sops = {
+        # This will add secrets.yml to the nix store
+        # You can avoid this by adding a string to the full path instead, i.e.
+        # sops.defaultSopsFile = "/root/.sops/secrets/example.yaml";
+        defaultSopsFile = ./secrets.sops.yaml;
 
-  # This is using an age key that is expected to already be in the filesystem
-  # age.keyFile = "/var/lib/sops-nix/key.txt";
+        # This will automatically import SSH keys as age keys
+        age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
-  # This will generate a new key if the key specified above does not exist
-  # age.generateKey = true;
+        # This is using an age key that is expected to already be in the filesystem
+        # age.keyFile = "/var/lib/sops-nix/key.txt";
 
-  # This is the actual specification of the secrets.
-  secrets."networking/wireless.conf" = { };
-  secrets."users/sparks/passwd" = {
-    neededForUsers = true;
-  };
+        # This will generate a new key if the key specified above does not exist
+        # age.generateKey = true;
 
-  secrets."k3s/node-token" = { };
+        # This is the actual specification of the secrets.
+        secrets."networking/wireless.conf" = { };
+        secrets."users/sparks/passwd" = {
+          neededForUsers = true;
+        };
 
-  secrets."comin/gh_token" = { };
-  secrets."comin/glab_token" = { };
+        secrets."k3s/node-token" = { };
+
+        secrets."comin/gh_token" = { };
+        secrets."comin/glab_token" = { };
+      };
+    };
+
 }

@@ -1,10 +1,20 @@
 { inputs, ... }:
 {
-  # Shared Home Manager modules
-  sharedModules = [
-    inputs.sops-nix.homeManagerModules.sops
-  ];
+  flake.nixosModules.home-manager =
+    { pkgs, ... }:
+    {
+      imports = [
+        inputs.home-manager.nixosModules.home-manager
+      ];
 
-  useGlobalPkgs = true;
-  useUserPackages = true;
+      home-manager = {
+        # Shared Home Manager modules
+        sharedModules = [
+          inputs.sops-nix.homeManagerModules.sops
+        ];
+
+        useGlobalPkgs = true;
+        useUserPackages = true;
+      };
+    };
 }
