@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.nixosModules.sops =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       imports = [
         inputs.sops-nix.nixosModules.sops
@@ -28,6 +28,12 @@
 
         secrets."users/sparks/passwd" = {
           neededForUsers = true;
+        };
+        secrets."users/sparks/u2f_keys" = {
+          neededForUsers = true;
+          owner = config.users.users.sparks.name;
+          group = config.users.users.sparks.group;
+          mode = "0440";
         };
 
         secrets."k3s/node-token" = { };
