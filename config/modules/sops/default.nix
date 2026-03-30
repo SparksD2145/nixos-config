@@ -33,7 +33,6 @@
           neededForUsers = true;
           owner = config.users.users.sparks.name;
           group = config.users.users.sparks.group;
-          path = "/home/sparks/.config/Yubico/u2f_keys";
           mode = "0440";
         };
 
