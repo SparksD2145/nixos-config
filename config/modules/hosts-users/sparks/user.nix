@@ -177,6 +177,7 @@
         ms-vscode-remote.remote-ssh
         visualstudioexptteam.vscodeintellicode
         eamodio.gitlens
+        christian-kohler.path-intellisense
       ];
     };
 
