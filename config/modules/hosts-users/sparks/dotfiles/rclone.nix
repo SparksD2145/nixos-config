@@ -14,6 +14,12 @@
           host = "omega.sparks.codes";
         };
       };
+      "tango.sparks.codes" = {
+        config = {
+          type = "sftp";
+          host = "tango.sparks.codes";
+        };
+      };
     };
   };
 }
