@@ -18,6 +18,7 @@
       self.nixosModules.hosts-global
       self.nixosModules.hosts-users
       self.nixosModules.hosts-workstations-shared
+      self.nixosModules.libvirtd
     ];
   };
 }
