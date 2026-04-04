@@ -6,6 +6,10 @@
 }:
 
 {
+  imports = [
+    ./dotfiles/rclone.nix
+  ];
+
   # System Configuration
   users.users.sparks = {
     # Define a user account. Don't forget to set a password with 'passwd'.

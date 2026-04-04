@@ -66,7 +66,6 @@ with pkgs;
   gitleaks
   ipmitool
   fasd
-  rclone
   ntfy-sh
 
   # development
