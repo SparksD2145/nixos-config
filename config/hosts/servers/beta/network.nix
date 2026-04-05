@@ -1,7 +1,8 @@
 { ... }:
 {
   # Enable a bridge network for VM access.
-  networking.interfaces."enp7s0".useDHCP = false;
+  networking.useDHCP = false;
+  networking.interfaces."enp7s0".useDHCP = true;
   networking.interfaces."br0".useDHCP = true;
   networking.bridges = {
     br0 = {
