@@ -26,5 +26,10 @@
           }
         ];
       };
+
+      sops = {
+        secrets."comin/gh_token" = { };
+        secrets."comin/glab_token" = { };
+      };
     };
 }
