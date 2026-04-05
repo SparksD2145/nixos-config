@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Accept hostname as an argument
 if [ -z "$1" ]; then
     system_hostname = $1
