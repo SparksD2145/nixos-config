@@ -15,7 +15,7 @@
   networking.hostName = "beta"; # Define your hostname.
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  # networking.networkmanager.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
