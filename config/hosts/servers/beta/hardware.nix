@@ -38,6 +38,18 @@
   };
 
   boot.swraid.enable = true;
+  boot.swraid.mdadmConf = ''
+    MAILADDR root
+    ARRAY /dev/md0 metadata=1.2 UUID=0e3029b9:32ff4b98:f9dfa3c4:bd2ebb54
+  '';
+  fileSystems."/mnt/local" = {
+    device = "/dev/md0";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "nofail"
+    ];
+  };
 
   swapDevices = [ ];
 
