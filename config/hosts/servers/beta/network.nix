@@ -2,7 +2,8 @@
 {
   # Enable a bridge network for VM access.
   networking = {
-    networkmanager.enable = false;
+    networkmanager.enable = true;
+    networkmanager.unmanaged = [ "interface-name:br0" ];
     useNetworkd = true;
     bridges.br0.interfaces = [ "enp7s0" ];
     interfaces.br0 = {
