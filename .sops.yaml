@@ -10,7 +10,7 @@ keys:
   - &server_omega age1mz8x2r8xwhhljmnflvwvk68rge40zvjrtsdm29as4rahl3v7a4cq85m2jw
   - &server_vm_gpu_1 age1af4f25wyqnxeq2wg05nusmry400slm4w53w7hh6xdw28axhjuczsuhp5xf
   - &server_lambda age106nfdadmxeg92rylfa5pxzhsv85whqgqkanjuwmpt8zydz880p0qnv2wym
-  - &server_beta age1y6ku6mmnguq0utzklrtj9rutv0jz3nfk2jrtje70gte05wfgtyeqtcwukx
+  - &server_beta age1gxvmq7jj9f28pe6td68c2glmzxa9ja8g3pygd4xdm0zgnvdjlvgsgdawth
 
 creation_rules:
   - path_regex: config/.*\.sops\.(yaml|json|env|ini)$
