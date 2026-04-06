@@ -24,30 +24,16 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/9300aae7-841f-4598-b124-8c15b4f365f2";
+    device = "/dev/disk/by-uuid/d94393ef-2307-4e02-886b-b892d58c519d";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/B549-0102";
+    device = "/dev/disk/by-uuid/D827-3CC4";
     fsType = "vfat";
     options = [
       "fmask=0022"
       "dmask=0022"
-    ];
-  };
-
-  boot.swraid.enable = true;
-  boot.swraid.mdadmConf = ''
-    MAILADDR root
-    ARRAY /dev/md0 metadata=1.2 UUID=0e3029b9:32ff4b98:f9dfa3c4:bd2ebb54
-  '';
-  fileSystems."/mnt/local" = {
-    device = "/dev/md0";
-    fsType = "ext4";
-    options = [
-      "defaults"
-      "nofail"
     ];
   };
 
