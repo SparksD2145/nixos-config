@@ -5,7 +5,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware.nix
-    ./network.nix
   ];
 
   # Bootloader.
