@@ -17,7 +17,6 @@
       # Shared Host Modules
       self.nixosModules.hosts-global
       self.nixosModules.hosts-users
-      self.nixosModules.libvirtd
     ];
   };
 }
