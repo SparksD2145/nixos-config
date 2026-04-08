@@ -182,6 +182,7 @@
         visualstudioexptteam.vscodeintellicode
         eamodio.gitlens
         christian-kohler.path-intellisense
+        hashicorp.terraform
       ];
     };
 
