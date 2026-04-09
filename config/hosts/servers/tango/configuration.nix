@@ -7,14 +7,9 @@
     ./hardware.nix
   ];
 
-  # Bootloader.
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/disk/by-id/ata-Samsung_SSD_870_EVO_500GB_S6PXNU0X418853K"; # or "nodev" for efi only
+  # Bootloader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "tango"; # Define your hostname.
   networking.hostId = "8425e341"; # required for zfs, can be set to any random string, but must be unique for each machine in a cluster
