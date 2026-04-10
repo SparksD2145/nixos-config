@@ -12,6 +12,7 @@
         config = {
           type = "sftp";
           host = "omega.sparks.codes";
+          user = config.users.users.sparks.name;
         };
 
         secrets.password = config.sops.secrets."users/sparks/rclone_pass".path;
@@ -20,6 +21,7 @@
         config = {
           type = "sftp";
           host = "tango.sparks.codes";
+          user = config.users.users.sparks.name;
         };
 
         secrets.password = config.sops.secrets."users/sparks/rclone_pass".path;
@@ -28,6 +30,11 @@
   };
 
   sops.secrets = {
-    "users/sparks/rclone_pass" = { };
+    "users/sparks/rclone_pass" = {
+      neededForUsers = true;
+      mode = "0440";
+      owner = config.users.users.sparks.name;
+      group = config.users.users.sparks.group;
+    };
   };
 }

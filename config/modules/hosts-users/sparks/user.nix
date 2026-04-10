@@ -10,6 +10,10 @@
     ./dotfiles/rclone.nix
   ];
 
+  sops.secrets."users/sparks/passwd" = {
+    neededForUsers = true;
+  };
+
   # System Configuration
   users.users.sparks = {
     # Define a user account. Don't forget to set a password with 'passwd'.
