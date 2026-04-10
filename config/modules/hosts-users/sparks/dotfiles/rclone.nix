@@ -31,7 +31,6 @@
 
   sops.secrets = {
     "users/sparks/rclone_pass" = {
-      neededForUsers = true;
       mode = "0440";
       owner = config.users.users.sparks.name;
       group = config.users.users.sparks.group;
