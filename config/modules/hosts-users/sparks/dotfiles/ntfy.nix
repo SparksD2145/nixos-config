@@ -10,7 +10,7 @@
       mode = "0440";
       owner = config.users.users.sparks.name;
       group = config.users.users.sparks.group;
-      path = "/home/sparks/ntfy/client.yml";
+      path = "/home/sparks/.config/ntfy/client.yml";
       format = "yaml";
     };
   };
