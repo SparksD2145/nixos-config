@@ -7,6 +7,7 @@
 
 {
   imports = [
+    ./dotfiles/ntfy.nix
     ./dotfiles/rclone.nix
   ];
 
@@ -54,11 +55,6 @@
           [ ]
       )
     ];
-
-    # ntfy config
-    home.file.".config/ntfy/client.yml" = {
-      source = ./dotfiles/ntfy.yaml;
-    };
 
     # Enable direnv
     programs.direnv.enable = true;
