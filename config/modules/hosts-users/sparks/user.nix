@@ -178,7 +178,6 @@
         editorconfig.editorconfig
         ms-python.python
         ms-azuretools.vscode-docker
-        ms-vscode-remote.remote-ssh
         visualstudioexptteam.vscodeintellicode
         eamodio.gitlens
         christian-kohler.path-intellisense
