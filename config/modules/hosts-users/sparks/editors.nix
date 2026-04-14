@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   home-manager.users.sparks = {
     programs.vim = {
@@ -35,7 +35,6 @@
 
         set number relativenumber
       '';
-
     };
 
     programs.vscode = {
