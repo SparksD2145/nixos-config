@@ -32,6 +32,7 @@
     enable = true;
     packages = [
       "app.freelens.Freelens"
+      "com.github.wwmm.easyeffects"
     ];
   };
 
