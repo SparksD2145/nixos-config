@@ -21,6 +21,9 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  # Enable rotation sensor
+  hardware.sensor.iio.enable = true;
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/9659f4d5-a596-4fca-b412-b7600ce78962";
     fsType = "ext4";
