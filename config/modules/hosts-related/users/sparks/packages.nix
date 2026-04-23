@@ -43,7 +43,7 @@ with pkgs;
   # it provides the command `nom` works just like `nix`
   # with more details log output
   nix-output-monitor
-  nixfmt-rfc-style
+  nixfmt
   nil
 
   # productivity
@@ -70,7 +70,7 @@ with pkgs;
 
   # development
   nodejs_24
-  nodePackages.prettier
+  prettier
   python3
   uv
   go
