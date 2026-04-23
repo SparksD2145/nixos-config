@@ -13,7 +13,6 @@
       self.nixosModules.home-manager
       self.nixosModules.sops
       self.nixosModules.comin
-      self.nixosModules.niri
 
       # Shared Host Modules
       self.nixosModules.hosts-global
