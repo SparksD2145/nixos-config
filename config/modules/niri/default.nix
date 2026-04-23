@@ -8,7 +8,7 @@
         enable = true;
         package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
       };
-      programs.kitty.enable = true;
+      environment.systemPackages = with pkgs; [ kitty ];
     };
 
   perSystem =

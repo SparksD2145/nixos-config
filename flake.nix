@@ -17,6 +17,7 @@
 
     # flake-parts, used for modularizing NixOS configurations
     flake-parts.url = "github:hercules-ci/flake-parts";
+    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
     # import-tree, used to import modularized configurations
     import-tree.url = "github:vic/import-tree";
