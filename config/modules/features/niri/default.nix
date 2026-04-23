@@ -8,7 +8,17 @@
         enable = true;
         package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
       };
-      environment.systemPackages = with pkgs; [ kitty ];
+
+      environment.systemPackages = with pkgs; [
+        kitty
+        mako
+        gnome-keyring
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+        fuzzel
+        kdePackages.polkit-kde-agent-1
+        xwayland-satellite
+      ];
 
       # Required settings
       networking.networkmanager.enable = true;
