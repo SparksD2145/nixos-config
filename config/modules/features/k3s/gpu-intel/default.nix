@@ -1,7 +1,7 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
   flake.nixosModules.k3s-gpu-intel =
-    { ... }:
+    { pkgs, ... }:
     {
       services.xserver.videoDrivers = [ "modesetting" ];
 
