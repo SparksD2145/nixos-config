@@ -21,6 +21,7 @@
         kdePackages.polkit-kde-agent-1
         xwayland-satellite
         swaylock
+        seahorse
       ];
 
       # Required settings
@@ -28,6 +29,8 @@
       hardware.bluetooth.enable = true;
       services.power-profiles-daemon.enable = true;
       services.upower.enable = true;
+      services.gnome.gnome-keyring.enable = true;
+      security.pam.services.login.enableGnomeKeyring = true;
     };
 
   perSystem =
