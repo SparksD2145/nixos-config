@@ -50,6 +50,8 @@
             "/usr/lib/pam_kwallet_init"
           ];
 
+          hotkey-overlay.skip-at-startup = { };
+
           environment = {
             "NIXOS_OZONE_WL" = "1";
             "ELECTRON_OZONE_PLATFORM_HINT" = "wayland";
