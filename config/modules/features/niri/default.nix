@@ -13,7 +13,6 @@
 
       environment.systemPackages = with pkgs; [
         kitty
-        alacritty
         mako
         gnome-keyring
         xdg-desktop-portal-gtk
@@ -73,7 +72,7 @@
           binds = {
             # General
             "Mod+Shift+Slash".show-hotkey-overlay = { };
-            "Mod+Return".spawn-sh = lib.getExe pkgs.alacritty;
+            "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
             "Super+Alt+L".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call lockScreen lock";
             "Mod+Tab".toggle-overview = { };
             "Control+Alt+Delete".quit = { };
