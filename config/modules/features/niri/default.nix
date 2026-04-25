@@ -17,6 +17,7 @@
         gnome-keyring
         xdg-desktop-portal-gtk
         xdg-desktop-portal-gnome
+        wl-mirror
         fuzzel
         kdePackages.polkit-kde-agent-1
         xwayland-satellite
