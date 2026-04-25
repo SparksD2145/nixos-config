@@ -136,6 +136,16 @@
             "Mod+Shift+U".move-workspace-down = { };
             "Mod+Shift+I".move-workspace-up = { };
           };
+
+          switch-events = {
+            lid-close.spawn = "${lib.getExe self'.packages.myNoctalia} ipc call sessionMenu lockAndSuspend";
+          };
+
+          window-rules = [
+            {
+              open-maximized = true;
+            }
+          ];
         };
       };
     };
