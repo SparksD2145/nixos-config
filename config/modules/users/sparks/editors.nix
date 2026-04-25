@@ -51,6 +51,7 @@
         eamodio.gitlens
         christian-kohler.path-intellisense
         hashicorp.terraform
+        rust-lang.rust-analyzer
       ];
     };
   };
