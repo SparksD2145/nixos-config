@@ -146,6 +146,10 @@
               open-maximized = true;
             }
           ];
+
+          outputs."eDP-1" = {
+            scale = 1;
+          };
         };
       };
     };
