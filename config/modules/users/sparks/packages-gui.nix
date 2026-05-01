@@ -8,8 +8,8 @@ with pkgs;
   # fun stuff
   obs-studio
   vlc
-  moonlight-qt
-  discord-ptb
+  # moonlight-qt
+  # discord-ptb
 
   # video editing
   davinci-resolve
