@@ -17,6 +17,7 @@
         wget
         curl
         tmux
+        kitty
 
         # System
         sysstat
